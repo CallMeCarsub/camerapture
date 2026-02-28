@@ -58,8 +58,9 @@ public class PictureTaker {
     /// for it to be uploaded.
     public void tryUploadFile(Path filePath) {
         try {
-            this.picture = ImageIO.read(filePath.toFile());
-            Camerapture.NETWORK.sendToServer(new NewPicturePacket());
+            //this.picture = ImageIO.read(filePath.toFile());
+//            Camerapture.NETWORK.sendToServer(new NewPicturePacket());
+            throw new UnsupportedOperationException();
         } catch (Exception e) {
             Camerapture.LOGGER.error("failed to read picture from file", e);
 

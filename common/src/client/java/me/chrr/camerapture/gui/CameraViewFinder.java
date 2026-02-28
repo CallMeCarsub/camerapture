@@ -31,7 +31,20 @@ public enum CameraViewFinder {
         int width = graphics.guiWidth();
         int height = graphics.guiHeight();
 
-        drawViewFinder(graphics, 10, 10, width - 10, height - 10, 2, 30);
+
+
+//        drawViewFinder(graphics, 10, 10, width - 10, height - 10, 2, 30);
+        int minDimension = Math.min(width, height);
+        int xOffset = 10;
+        int yOffset = 10;
+        if(minDimension == width){
+            yOffset = (height - minDimension) / 2;
+
+        }else{
+            xOffset = (width - minDimension) / 2;
+        }
+        drawViewFinder(graphics, xOffset, yOffset, width - xOffset, height - yOffset, 2, 30);
+
         drawViewFinder(graphics, width / 2 - 20, height / 2 - 20, width / 2 + 20, height / 2 + 20, 1, 10);
 
         drawZoomBar(graphics, font, width - 10, height / 2 - height / 6, height / 3);
