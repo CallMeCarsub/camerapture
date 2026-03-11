@@ -78,7 +78,7 @@ public class CameraItem extends Item {
 
     /// Find the amount of paper that the player has.
     public static int getPaperInInventory(Player player) {
-        return player.getInventory().countItem(Items.PAPER);
+        return player.getInventory().countItem(Items.GUNPOWDER);
     }
 
     /// Return if the player can take a picture. They can if they are

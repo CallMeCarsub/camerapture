@@ -102,7 +102,7 @@ public class Camerapture {
 
             // If the player is in creative mode, skip taking any paper.
             if (!player.isCreative()) {
-                if (ContainerHelper.clearOrCountMatchingItems(player.getInventory(), (stack) -> stack.is(Items.PAPER), 1, false) != 1) {
+                if (ContainerHelper.clearOrCountMatchingItems(player.getInventory(), (stack) -> stack.is(Items.GUNPOWDER), 1, false) != 1) {
                     return;
                 }
             }

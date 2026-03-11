@@ -50,7 +50,7 @@ public class PictureCloningRecipe extends CustomRecipe {
                     remainder.set(i, stack.copyWithCount(1));
                     picture = stack;
                 } else {
-                    if (!stack.is(Items.PAPER)) {
+                    if (!stack.is(Items.GUNPOWDER)) {
                         return Optional.empty();
                     }
 

@@ -47,14 +47,17 @@ public enum CameraViewFinder {
 
         drawViewFinder(graphics, width / 2 - 20, height / 2 - 20, width / 2 + 20, height / 2 + 20, 1, 10);
 
-        drawZoomBar(graphics, font, width - 10, height / 2 - height / 6, height / 3);
+        drawZoomBar(graphics, font, /*width - 10*/width - xOffset, height / 2 - height / 6, height / 3);
 
         int fh = font.lineHeight;
-        int textX = 25;
-        int textY = height - 25;
+
 
         if (!Camerapture.CONFIG_MANAGER.getConfig().client.simpleCameraHud) {
-            graphics.drawString(font, Component.translatable("text.camerapture.date", SDF_DATE.format(new Date())), textX, textY - fh, CommonColors.WHITE, false);
+            Component text = Component.translatable("text.camerapture.date", SDF_DATE.format(new Date()));
+            int w = font.width(text);
+            int textX = width / 2 - w / 2; // 25;
+            int textY = 15 - fh; //height - 25;
+            graphics.drawString(font, text, textX, textY, CommonColors.WHITE, false);
         }
 
         if (!CameraItem.canTakePicture(player)) {
@@ -64,13 +67,13 @@ public enum CameraViewFinder {
                 int y = height / 2 + 32;
                 graphics.drawString(font, Component.translatable("text.camerapture.no_paper"), x, y, CommonColors.RED, false);
             }
-        } else if (!Camerapture.CONFIG_MANAGER.getConfig().client.simpleCameraHud) {
+        } else if (!Camerapture.CONFIG_MANAGER.getConfig().client.simpleCameraHud && !player.hasInfiniteMaterials()) {
             int paper = CameraItem.getPaperInInventory(player);
 
             Component text = Component.translatable("text.camerapture.paper_available", paper);
             int w = font.width(text);
-            int x = width - 25 - w;
-            int y = height - 25 - fh;
+            int x = (width/2) - (w/2); //width - 25 - w;
+            int y = height - 15;// - fh;
             graphics.drawString(font, text, x, y, CommonColors.WHITE, false);
         }
     }
