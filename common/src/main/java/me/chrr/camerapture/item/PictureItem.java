@@ -110,6 +110,12 @@ public class PictureItem extends Item {
     }
 
     public static void getTooltip(Consumer<Component> textConsumer, ItemStack stack) {
+        TooltipDisplay tooltipDisplay = stack.get(DataComponents.TOOLTIP_DISPLAY);
+        if(tooltipDisplay != null) {
+            if(!tooltipDisplay.shows(Camerapture.PICTURE_DATA)){
+                return;
+            }
+        }
         PictureData data = getPictureData(stack);
         if (data == null) {
             return;
